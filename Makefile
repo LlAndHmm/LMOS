@@ -25,16 +25,16 @@ all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 
 link:
 	@echo 链接内核文件...
-	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o kernel
+	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o lm_kernel
 
 .PHONY:clean
 clean:
-	$(RM) $(S_OBJECTS) $(C_OBJECTS) kernel
+	$(RM) $(S_OBJECTS) $(C_OBJECTS) lm_kernel
 
 .PHONY:update_image
 update_image:
 	sudo mount floppy.img /mnt/kernel
-	sudo cp kernel /mnt/kernel/boot/kernel
+	sudo cp lm_kernel /mnt/kernel/boot/lm_kernel
 	sleep 1
 	sudo umount /mnt/kernel
 
@@ -58,4 +58,4 @@ bochs:
 debug:
 	qemu -S -s -fda floppy.img -boot a &
 	sleep 1
-	cgdb -x tools/gdbinit
+	cgdb -x scripts/gdbinit
