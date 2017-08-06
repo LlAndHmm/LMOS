@@ -1,13 +1,17 @@
 #include "types.h"
 #include "console.h"
+#include "debug.h"
 
 int kern_entry()
 {
     console_clear();
-    console_putc_color('A', black, green);
-    console_putc_color('\n', black, green);
-    console_putc_color('B', black, green);
-    console_putc_color('\n', black, green);
-    console_write_dec(1234, black, red);
+    printk("A");
+    printk("\n");
+    printk("%d", 52432);
+    printk("\n");
+    char c = 'c';
+	char l = 'l';
+    int value = 5;
+    printk("%c 's value is %d, and my name is %c", c, value, l);
     return 0;
 }

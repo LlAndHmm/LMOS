@@ -107,17 +107,16 @@ void console_write_dec(uint32_t n, color_t back, color_t fore) {
 	int length = 0;		//记录整型数有多少位
 
 	while (n != 0) {
-		length++;
 		//将分离的位转换为ascii码
 		digit[length] = (n % 10) + 48;		
 		n /= 10;
-	}
-	
-	for (int i = length; i >= 0; i--) {
+		length++;
+	}	
+
+	for (int i = length - 1; i >= 0; i--) {
 		console_putc_color(digit[i], black, white);
 	}
 	
-
 }
 
 

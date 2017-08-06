@@ -72,3 +72,24 @@ char* strcat(char *dest, const char *src) {
 	
 	return dest;
 }
+
+char* itoa(int n, char* digit, int radix) {
+	int length = 0;		//记录整型数有多少位
+
+	while (n != 0) {
+		//将分离的位转换为ascii码
+		digit[length] = (n % radix) + 48;		
+		n /= radix;
+		length++;
+	}
+	digit[length] = '\0';
+	
+	int index = length - 1;
+	for (int i = 0; i < length / 2; i++, index--) {
+		int temp = digit[i];
+		digit[i] = digit[index];
+		digit[index] = temp;
+	}
+
+	return digit;
+}
