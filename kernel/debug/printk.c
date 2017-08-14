@@ -25,6 +25,12 @@ int vprintf(char* buff, char* format, va_list args) {
 					*str++ = *num++;
 				}
 				break;
+			case 'x':
+				num = itoa(va_arg(args, int), buffer, 16);
+				while (*num != '\0') {
+					*str++ = *num++;
+				}
+				break;
 			default:
 				*str++ = '%';	
 				

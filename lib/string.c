@@ -73,12 +73,17 @@ char* strcat(char *dest, const char *src) {
 	return dest;
 }
 
-char* itoa(int n, char* digit, int radix) {
+char* itoa(uint32_t n, char* digit, int radix) {
 	int length = 0;		//记录整型数有多少位
-
+	
 	while (n != 0) {
 		//将分离的位转换为ascii码
-		digit[length] = (n % radix) + 48;		
+		if (n % radix > 9) {
+			digit[length] = (n % radix) + 'A' - 10;
+		} else {
+			digit[length] = (n % radix) + '0';
+		}
+				
 		n /= radix;
 		length++;
 	}

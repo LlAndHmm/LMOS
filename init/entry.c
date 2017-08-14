@@ -1,17 +1,19 @@
 #include "types.h"
 #include "console.h"
 #include "debug.h"
+#include "pmm.h"
 
 int kern_entry()
 {
+	init_gdt();
     console_clear();
-    printk("A");
-    printk("\n");
-    printk("%d", 52432);
-    printk("\n");
-    char c = 'c';
-	char l = 'l';
-    int value = 5;
-    printk("%c 's value is %d, and my name is %c", c, value, l);
+    printk("Hello, OS kernel!\n");
+    
+    printk("kernel in memory start: 0x%x\n", kern_start);
+    printk("kernel in memory end: 0x%x\n", kern_end);
+    
+    //printk("test: 0x%x\n", 179688);
+    show_memory_map();
+    
     return 0;
 }
