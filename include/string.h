@@ -17,7 +17,7 @@ char *strcat(char *dest, const char *src);
 
 int strlen(const char *src);
 
-char* itoa(int n, char* digit, int radix);
+char* itoa(uint32_t n, char* digit, int radix);
 
 #endif  // INCLUDE_STRING_H_
 

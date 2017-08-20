@@ -15,5 +15,10 @@ int kern_entry()
     //printk("test: 0x%x\n", 179688);
     show_memory_map();
     
+    init_pmm();
+    printk("\nThe Count of Physical Memory Page is: %d\n\n", phy_page_count);
+    printk("allocte physical addr: 0x%x\n", pmm_allo_page());
+    printk("allocte physical addr: 0x%x\n", pmm_allo_page());
+    printk("allocte physical addr: 0x%x\n", pmm_allo_page());
     return 0;
 }
