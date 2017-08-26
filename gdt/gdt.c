@@ -17,8 +17,8 @@ static void gdt_set_gate(int32_t num, uint32_t base,
 extern uint32_t stack;
 
 // 初始化全局描述符表
-void init_gdt()
-{
+void init_gdt() {
+
     // 全局描述符表界限 e.g. 从 0 开始，所以总长要 - 1
     gdt_ptr.limit = sizeof(gdt_entry_t) * GDT_LENGTH - 1;
     gdt_ptr.base = (uint32_t)&gdt_entries;
@@ -36,8 +36,8 @@ void init_gdt()
 
 // 全局描述符表构造函数，根据下标构造
 // 参数分别是 数组下标、基地址、限长、访问标志，其它访问标志
-static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
-{
+static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran) {
+
     gdt_entries[num].base_low     = (base & 0xFFFF);
     gdt_entries[num].base_middle  = (base >> 16) & 0xFF;
     gdt_entries[num].base_high    = (base >> 24) & 0xFF;
