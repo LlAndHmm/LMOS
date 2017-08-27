@@ -4,6 +4,7 @@
 #include "pmm.h"
 #include "idt.h"
 #include "timer.h"
+#include "keyboard.h"
 
 int kern_entry() {
 
@@ -22,9 +23,12 @@ int kern_entry() {
     printk("allocte physical addr: 0x%x\n", pmm_allo_page());
     printk("allocte physical addr: 0x%x\n", pmm_allo_page());
     printk("allocte physical addr: 0x%x\n", pmm_allo_page());
-    **/
-    init_idt();
+   
+    
     init_timer(200);
+     **/
+    init_idt();
+    init_kb();
     asm volatile ("sti");
     return 0;
 }
